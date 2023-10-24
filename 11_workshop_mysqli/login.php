@@ -13,7 +13,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
   var_dump('check the user credentials');
 
 
-  // save the user inserted credential 
+  // save the user inserted credential
   $username = $_POST['username'];
   $plain_text_password = $_POST['password']; // hash the password
   $hashed_password = md5($plain_text_password);
@@ -43,13 +43,13 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
   // dd($statement, $result);
 
-  if ($result->num_rows > 0) {
+  if ($result->num_rows == 1) {
     // if the user is found
     // take user id and username, save them into the session
     // redirect the user to the dashboard page
     //echo "You can enter the restricted area";
     //dd($result);
-    $user = $result->fetch_assoc();
+    $user = $result->fetch_assoc(); // array di risultati [ 'ID' => 3, 'username' => artur ];
 
     $_SESSION['user_id'] = $user['ID'];
     $_SESSION['user_name'] = $user['username'];
@@ -60,6 +60,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     // redirect the user to the login page
     // with a session message
 
+      $_SESSION['error_message'] = 'Credenziali sbagliate, riprova o recupera la tua password!';
   }
   //$connection->close();
   DB::close_connection($connection);
