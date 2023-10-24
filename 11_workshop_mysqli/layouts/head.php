@@ -25,15 +25,15 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
           <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="/" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
+              <a class="nav-link" href="index.php" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
             </li>
             <li class="nav-item d-flex">
 
-              <?php if ($_SESSION['user_id']) : ?>
+              <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id']) : ?>
                 <span>Hi, <?= $_SESSION['user_name']; ?></span>
-                <a class="nav-link" href="/dashboard.php">Dashboard <i class="fas fa-arrow-right fa-xs fa-fw"></i> </a>
+                <a class="nav-link" href="dashboard.php">Dashboard <i class="fas fa-arrow-right fa-xs fa-fw"></i> </a>
               <?php else : ?>
-                <a class="nav-link" href="/login.php">Log in <i class="fa-solid fa-lock"></i></a>
+                <a class="nav-link" href="login.php">Log in <i class="fa-solid fa-lock"></i></a>
               <?php endif; ?>
 
             </li>
