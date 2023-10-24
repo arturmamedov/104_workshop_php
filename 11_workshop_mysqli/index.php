@@ -6,6 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 include __DIR__ . '/layouts/head.php';
+include __DIR__ . '/Helpers/function.php';
 
 ?>
 
@@ -13,7 +14,10 @@ include __DIR__ . '/layouts/head.php';
 <main>
   <div class="banner bg-dark text-white py-3">
     <div class="container">
-      <h3>Home Page</h3>
+      <h3>Home Page </h3>
+        <?php if (isset($_SESSION['user_name'])): ?>
+            <h2>Welcome <?php echo session('user_name'); ?></h2>
+        <?php endif; ?>
     </div>
   </div>
 
